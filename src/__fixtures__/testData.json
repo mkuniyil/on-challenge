@@ -1,0 +1,117 @@
+{
+  "shoes": [
+    {
+      "name": "cloud",
+      "rating": 0,
+      "imgPath": "Cloud.png"
+    },
+    {
+      "name": "cloudx",
+      "rating": 0,
+      "imgPath": "CloudX.png"
+    },
+    {
+      "name": "cloudflow",
+      "rating": 0,
+      "imgPath": "Cloudflow.png"
+    },
+    {
+      "name": "cloudventure",
+      "rating": 0,
+      "imgPath": "Cloudventure.png"
+    },
+    {
+      "name": "cloudsurfer",
+      "rating": 0,
+      "imgPath": "Cloudsurfer.png"
+    },
+    {
+      "name": "cloudventure_waterproof",
+      "rating": 0,
+      "imgPath": "CloudventureWaterproof.png"
+    },
+    {
+      "name": "cloudventure_peak",
+      "rating": 0,
+      "imgPath": "CloudventurePeak.png"
+    },
+    {
+      "name": "cloudflyer",
+      "rating": 0,
+      "imgPath": "Cloudflyer.png"
+    }
+  ],
+
+  "questions": [
+    {
+      "id": 0,
+      "copy": "Are you male or female?",
+      "answers": [
+        {
+          "id": 0,
+          "copy": "Male",
+          "nextQuestion": 1,
+          "ratingIncrease": {
+            "cloud": 5,
+            "cloudx": 4,
+            "cloudflow": 3,
+            "cloudventure": 1,
+            "cloudsurfer": 3,
+            "cloudventure_waterproof": 3,
+            "cloudventure_peak": 1,
+            "cloudflyer": 3
+          }
+        },
+        {
+          "id": 1,
+          "copy": "Female",
+          "nextQuestion": "",
+          "ratingIncrease": {
+            "cloud": 2,
+            "cloudx": 4,
+            "cloudflow": 2,
+            "cloudventure": 1,
+            "cloudsurfer": 3,
+            "cloudventure_waterproof": 3,
+            "cloudventure_peak": 1,
+            "cloudflyer": 3
+          }
+        }
+      ]
+    },
+    {
+      "id": 1,
+      "copy": "Are you looking for a day to day trainer or running shoe?",
+      "answers": [
+        {
+          "copy": "Daily Shoe",
+          "nextQuestion": "",
+          "ratingIncrease": {
+            "cloud": 5,
+            "cloudx": 4,
+            "cloudflow": 5,
+            "cloudventure": 1,
+            "cloudsurfer": 3,
+            "cloudventure_waterproof": 4,
+            "cloudventure_peak": 1,
+            "cloudflyer": 3
+          }
+        },
+        {
+          "copy": "Running Shoe",
+          "nextQuestion": "",
+          "ratingIncrease": {
+            "cloud": 1,
+            "cloudx": 1,
+            "cloudflow": 1,
+            "cloudventure": 1,
+            "cloudsurfer": 3,
+            "cloudventure_waterproof": 3,
+            "cloudventure_peak": 1,
+            "cloudflyer": 3
+          }
+        }
+      ]
+    }
+  ]
+}

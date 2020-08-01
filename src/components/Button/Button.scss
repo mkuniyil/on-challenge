@@ -1,0 +1,8 @@
+@import 'src/styles/helpers';
+
+.appButton {
+  background-color: transparent;
+  border: px-to-rem(1) solid white;
+  color: white;
+  outline: none;
+}

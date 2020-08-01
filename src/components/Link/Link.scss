@@ -1,0 +1,15 @@
+@import 'src/styles/helpers';
+
+.box_linkButton {
+  text-decoration: none;
+  background-color: black;
+  color: white;
+  padding: px-to-rem(12) px-to-rem(36);
+  font-size: px-to-rem(12);
+  transition-duration: 0.4s;
+  box-shadow: px-to-rem(2) px-to-rem(2) px-to-rem(2) #bebebe;
+
+  &:hover {
+    background-color: gray;
+  }
+}

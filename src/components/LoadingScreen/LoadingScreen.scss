@@ -1,0 +1,22 @@
+@import 'src/styles/helpers';
+
+.box_loadingScreen {
+  background-color: #333333;
+  color: #666666;
+
+  .body_content {
+    display: flex;
+
+    .content_body {
+      align-self: center;
+      display: inline-grid;
+      margin: 0 auto;
+
+      img {
+        width: px-to-rem(50);
+        height: px-to-rem(50);
+        margin: 0 auto;
+      }
+    }
+  }
+}
