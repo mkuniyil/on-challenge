@@ -1,0 +1,16 @@
+@import 'src/styles/helpers';
+
+.box_tileImageContainer {
+  display: inline-grid;
+  padding: px-to-rem(20);
+  margin: px-to-rem(20);
+  grid-row-gap: px-to-rem(16);
+  background-color: #f7f7f7;
+
+  .tile_image {
+    img {
+      width: px-to-rem(190);
+      height: px-to-rem(100);
+    }
+  }
+}

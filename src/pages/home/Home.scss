@@ -1,0 +1,37 @@
+@import 'src/styles/helpers';
+
+.box_homePage {
+  background-color: #f7f7f7;
+
+  .body_content {
+    max-width: px-to-rem(480);
+    margin: 0 auto;
+
+    .title {
+      margin-top: px-to-rem(60);
+    }
+
+    .box_linkButton {
+      margin-top: px-to-rem(40);
+    }
+
+    .box_imageContainer {
+      .background {
+        display: inline-grid;
+        grid-template-columns: 40% 60%;
+        margin-top: px-to-rem(40);
+
+        .label {
+          color: #a5a5a5;
+          font-size: px-to-rem(10);
+          grid-column-start: 1;
+        }
+
+        img {
+          width: 100%;
+          grid-column-start: 2;
+        }
+      }
+    }
+  }
+}
