@@ -4,7 +4,6 @@
   display: grid;
   grid-template-rows: px-to-rem(60) auto;
   min-height: 100vh;
-  grid-row-gap: px-to-rem(12);
 
   .box_appHeader {
     grid-row-start: 1;
