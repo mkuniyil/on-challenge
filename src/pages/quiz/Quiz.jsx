@@ -1,9 +1,9 @@
-import React, { useEffect, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { Redirect } from 'react-router-dom';
 import Button from '../../components/Button/Button';
 import './Quiz.scss';
 import LoadingScreen from '../../components/LoadingScreen/LoadingScreen';
-import { getQuestionList, updateShoeRating } from '../../utils/dataUtils';
+import { AppContext } from '../../AppProvider';
 
 const QuizContainer = ({ questionId, question, options, onClickHandler }) => (
   <div className="box_quizPage box_appBody" data-testid="quizPage">
@@ -29,26 +29,27 @@ const QuizContainer = ({ questionId, question, options, onClickHandler }) => (
 );
 
 const Quiz = () => {
+  const { questionsList, updateShoesList } = useContext(AppContext);
   const [currentQuestion, setCurrentQuestion] = useState();
-  const [questionsList, setQuestionsList] = useState([]);
+  const [questions, setQuestions] = useState([]);
   const [isQuizCompleted, setIsQuizCompleted] = useState(false);
 
   useEffect(() => {
     // setTimeout is used only to reflect the loading screen
-    setTimeout(() => setQuestionsList(getQuestionList()), 1000);
-  }, []);
+    setTimeout(() => setQuestions(questionsList), 1000);
+  }, [questionsList]);
 
   useEffect(() => {
     const initialId = 0;
     const initialQuestion = getQuestion(initialId);
 
     setCurrentQuestion(initialQuestion);
-  }, [questionsList]);
+  }, [questions]);
 
-  const getQuestion = (questionId) => questionsList[questionId];
+  const getQuestion = (questionId) => questions[questionId];
 
   const onClickHandler = ({ nextQuestion, ratingIncrease }) => {
-    updateShoeRating(ratingIncrease);
+    updateShoesList(ratingIncrease);
 
     if (!nextQuestion) {
       setIsQuizCompleted(true);

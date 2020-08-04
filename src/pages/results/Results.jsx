@@ -1,18 +1,18 @@
-import React, { useEffect, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import ImageTile from '../../components/ImageTile/ImageTile';
 import './Results.scss';
-import { getShoesList } from '../../utils/dataUtils';
+import { AppContext } from '../../AppProvider';
+import { getSortedList } from '../../utils/utils';
 
 const Results = () => {
-  const [shoesList, setShoesList] = useState([]);
+  const { shoesList=[] } = useContext(AppContext);
+  const [itemList, setItemsList] = useState([]);
 
   useEffect(() => {
-    const list = getShoesList();
+    getSortedList(shoesList, 'rating');
 
-    list.sort((a, b) => b['rating'] - a['rating']);
-
-    setTimeout(() => setShoesList(list), 1000);
-  });
+    setTimeout(() => setItemsList(shoesList), 1000);
+  },[shoesList]);
 
   return (
     <div className="box_resultsPage box_appBody" data-testid="resultsPage">
@@ -21,9 +21,9 @@ const Results = () => {
           Congratulatons! Based on your selection we've following suggested
           products. Enjoy your free 30 day trial period
         </div>
-        {shoesList.length > 0 && (
+        {itemList.length > 0 && (
           <ul className="tiles_listing" data-testid="tiles_listing">
-            {shoesList.map(({ name, id, imgPath }) => (
+            {itemList.map(({ name, imgPath }) => (
               <li key={name}>
                 <ImageTile name={name} imgPath={imgPath} />
               </li>

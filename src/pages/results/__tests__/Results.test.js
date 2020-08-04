@@ -1,45 +1,56 @@
 import { render, waitForElement } from '@testing-library/react';
 import React from 'react';
 import Results from '../Results';
-import { getShoesList } from '../../../utils/dataUtils';
+import { fetchData } from '../../../utils/utils';
+import { AppProvider } from '../../../AppProvider';
 
-jest.mock('../../../utils/dataUtils');
+jest.mock('../../../utils/utils');
 
-const mockList = [
-  {
-    name: 'cloud',
-    rating: 10,
-    imgPath: 'Cloud.png',
-  },
-  {
-    name: 'cloudx',
-    rating: 15,
-    imgPath: 'CloudX.png',
-  },
-];
+const mockList = {
+  shoes: [
+    {
+      name: 'cloud',
+      rating: 10,
+      imgPath: 'Cloud.png',
+    },
+    {
+      name: 'cloudx',
+      rating: 15,
+      imgPath: 'CloudX.png',
+    },
+  ],
+  questions: [],
+};
+
+const getComponent = () =>
+  render(
+    <AppProvider>
+      <Results />
+    </AppProvider>,
+  );
 
 test('when result page is loaded, it should render page component ', () => {
-  getShoesList.mockReturnValue(mockList);
-  const { queryByTestId } = render(<Results />);
+  fetchData.mockReturnValue(mockList);
+  const { queryByTestId } = getComponent();
 
   expect(queryByTestId('resultsPage')).not.toBeNull();
 });
 
 test('when result page is loaded, it should render same number of image tiles as list ', async () => {
-  getShoesList.mockReturnValue(mockList);
-  const { queryByTestId, queryAllByTestId } = render(<Results />);
+  fetchData.mockReturnValue(mockList);
+  const { queryByTestId, queryAllByTestId } = getComponent();
 
   await waitForElement(() => queryByTestId('tiles_listing'));
 
-  expect(queryAllByTestId('imageTiles').length).toEqual(mockList.length);
+  expect(queryAllByTestId('imageTiles').length).toEqual(mockList.shoes.length);
 });
 
 test('when result page is loaded, it should list shoes in sorted way ', async () => {
-  getShoesList.mockReturnValue(mockList);
-  const { queryByTestId, queryAllByTestId } = render(<Results />);
+  fetchData.mockReturnValue(mockList);
+  const { queryByTestId, queryAllByTestId } = getComponent();
 
   await waitForElement(() => queryByTestId('tiles_listing'));
   expect(queryAllByTestId('imageTileTitle')[1]).toHaveTextContent(
-    mockList[1].name,
+    mockList.shoes[1].name,
   );
 });
