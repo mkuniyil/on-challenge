@@ -36,17 +36,12 @@ const Quiz = () => {
 
   useEffect(() => {
     // setTimeout is used only to reflect the loading screen
-    setTimeout(() => setQuestions(questionsList), 1000);
+    const delayTimer = setTimeout(() => setQuestions(questionsList), 1000);
+
+    return () => clearTimeout(delayTimer);
   }, [questionsList]);
 
-  useEffect(() => {
-    const initialId = 0;
-    const initialQuestion = getQuestion(initialId);
-
-    setCurrentQuestion(initialQuestion);
-  }, [questions]);
-
-  const getQuestion = (questionId) => questions[questionId];
+  useEffect(() => setCurrentQuestion(questions[0]), [questions]);
 
   const onClickHandler = ({ nextQuestion, ratingIncrease }) => {
     updateShoesList(ratingIncrease);
@@ -56,7 +51,7 @@ const Quiz = () => {
       return;
     }
 
-    setCurrentQuestion(getQuestion(nextQuestion));
+    setCurrentQuestion(questions[nextQuestion]);
   };
 
   if (!currentQuestion) {

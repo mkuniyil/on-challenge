@@ -4,13 +4,11 @@ import './ImageTile.scss';
 const ImageTile = ({ name, imgPath }) => {
   const [imageSrc, setImageSrc] = useState(null);
 
-  useEffect(() => loadImage(), []);
-
-  const loadImage = () => {
+  useEffect(() => {
     import(`../../assets/${imgPath}`)
       .then((image) => setImageSrc(image.default))
       .catch(() => setImageSrc(null));
-  };
+  }, [imgPath]);
 
   return (
     <div className="box_tileImageContainer" data-testid="imageTiles">

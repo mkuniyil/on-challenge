@@ -5,14 +5,16 @@ import { AppContext } from '../../AppProvider';
 import { getSortedList } from '../../utils/utils';
 
 const Results = () => {
-  const { shoesList=[] } = useContext(AppContext);
+  const { shoesList = [] } = useContext(AppContext);
   const [itemList, setItemsList] = useState([]);
 
   useEffect(() => {
     getSortedList(shoesList, 'rating');
 
-    setTimeout(() => setItemsList(shoesList), 1000);
-  },[shoesList]);
+    const delayTimer = setTimeout(() => setItemsList(shoesList), 1000);
+
+    return () => clearTimeout(delayTimer);
+  }, [shoesList]);
 
   return (
     <div className="box_resultsPage box_appBody" data-testid="resultsPage">
